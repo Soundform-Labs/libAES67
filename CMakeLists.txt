@@ -4,6 +4,10 @@ project(libAES67 LANGUAGES C)
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
+endif()
+
 file(GLOB_RECURSE LIBAES67_SOURCES CONFIGURE_DEPENDS libAES67/src/*.c)
 file(GLOB_RECURSE LIBAES67_HEADERS CONFIGURE_DEPENDS libAES67/include/libAES67/*.h)
 
@@ -24,7 +28,20 @@ target_include_directories(libAES67 PUBLIC ${CMAKE_SOURCE_DIR}/libAES67/include)
 if(MSVC)
     target_compile_options(libAES67 PRIVATE /W4)
 else()
-    target_compile_options(libAES67 PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(libAES67 PRIVATE
+        -Wall -Wextra -Werror -Wpedantic -Wunused-parameter -Wshadow -Wconversion -Wcast-align -Wnull-dereference
+    )
+
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        target_compile_options(libAES67 PRIVATE
+            -fsanitize=address -fsanitize=undefined -g -O0
+        )
+        target_link_options(libAES67 PRIVATE -fsanitize=address -fsanitize=undefined)
+    elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+        target_compile_options(libAES67 PRIVATE -O2 -fstack-protector-strong)
+    elseif(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+        target_compile_options(libAES67 PRIVATE -O2 -g -fstack-protector-strong)
+    endif()
 endif()
 
 # ===============================
