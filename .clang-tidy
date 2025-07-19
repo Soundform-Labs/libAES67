@@ -1,0 +1,16 @@
+Checks: >
+  clang-analyzer-*,
+  cppcoreguidelines-*,
+  bugprone-*,
+  performance-*,
+  readability-*,
+  portability-*,
+  modernize-*,
+  -modernize-use-trailing-return-type,
+  -readability-identifier-naming
+WarningsAsErrors: ''
+HeaderFilterRegex: '.*'
+FormatStyle: file
+CheckOptions:
+  - key:             readability-magic-numbers.IgnoredValues
+    value:           '0,1,-1'
