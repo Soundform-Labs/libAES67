@@ -63,7 +63,7 @@ if(CPPCHECK_EXE)
             --std=c23
             --quiet
             -I ${CMAKE_SOURCE_DIR}
-            -I ${CMAKE_SOURCE_DIR}/libAES67/include/libAES67
+            -I ${CMAKE_SOURCE_DIR}/libAES67/include
             ${CMAKE_SOURCE_DIR}/libAES67/src
         COMMENT "Running cppcheck")
 endif()
