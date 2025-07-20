@@ -1,4 +1,3 @@
-#!/bin/sh
 ##===----------------------------------------------------------------------===##
 ##
 ## This source file is part of the libAES67 open source project
@@ -19,20 +18,8 @@
 ##
 ##===----------------------------------------------------------------------===##
 
-set -e
+cmake_minimum_required(VERSION 4.0)
+project(libAES67Tests LANGUAGES C OBJC)
 
-ROOT_DIR=$(git rev-parse --show-toplevel)
-
-echo "=> Running format target via cmake..."
-cmake --build "$ROOT_DIR/build" --target format
-
-echo "=> Running lint target via cmake..."
-cmake --build "$ROOT_DIR/build" --target lint
-
-if [ $? -ne 0 ]; then
-    echo "[ERROR]: Linting failed. Please fix the issues before committing."
-    exit 1
-fi
-
-echo "[SUCCESS]: Lint and format complete."
-exit 0
+set(CMAKE_C_STANDARD 23)
+set(CMAKE_C_STANDARD_REQUIRED ON)

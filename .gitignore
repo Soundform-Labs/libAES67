@@ -31,6 +31,9 @@ CMakeCache.txt
 cmake_install.cmake
 Makefile
 
+# Xcode Build
+.build/
+
 # Visual Studio Code settings
 .vscode/
 

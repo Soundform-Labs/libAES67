@@ -1,13 +1,14 @@
-[One line description of your change]
+<!-- One line description of your change -->
 
-### Motivation
+**Motivation:**
 
-[Explain why you're making this change.]
+<!-- Explain here the context, and why you're making that change.
+What is the problem you're trying to solve. -->
 
-### Modifications
+**Modifications:**
 
-[Describe what you changed.]
+<!-- Describe the modifications you've done. -->
 
-### Result
+**Result:**
 
-[Describe what will be different after your change.]
+<!-- After your change, what will change. -->
