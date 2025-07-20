@@ -15,12 +15,14 @@
  */
 
 /*
- * rtp.h
- * Description: Definition of RTP (Real-time Transport Protocol) functions.
+ * udp.h
+ * Description: Definition of UDP (User Datagram Protocol) functions.
  */
 
-#ifndef rtp_h
-#define rtp_h
+#ifndef libAES67_udp_h
+#define libAES67_udp_h
+
+#include <libAES67/network/types.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,4 +32,4 @@ extern "C" {
 }
 #endif
 
-#endif /* rtp_h */
+#endif /* libAES67_udp_h */

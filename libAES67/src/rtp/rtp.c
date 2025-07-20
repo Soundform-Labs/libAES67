@@ -15,30 +15,8 @@
  */
 
 /*
- * libAES67.h
- * Description: Umbrella Header for libAES67.
+ * rtp.c
+ * Description: Implementation of RTP (Real-time Transport Protocol) functions.
  */
 
-#ifndef LIBAES67_H
-#define LIBAES67_H
-
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
-
-#define LIBAES67_VERSION_MAJOR 0
-#define LIBAES67_VERSION_MINOR 1
-#define LIBAES67_VERSION_PATCH 0
-
-#define LIBAES67_VERSION_STRING "0.1.0"
-
-#pragma mark - Includes
-
-#include <libAES67/audio/types.h>
-#include <libAES67/clock/time.h>
-#include <libAES67/network/types.h>
-#include <libAES67/network/udp.h>
 #include <libAES67/rtp/rtp.h>
-#include <libAES67/types.h>
-
-#endif // !LIBAES67_H

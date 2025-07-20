@@ -15,19 +15,37 @@
  */
 
 /*
- * udp.h
- * Description: Definition of UDP (User Datagram Protocol) functions.
+ * types.h
+ * Description: Definition of various data types used in the library.
  */
 
-#ifndef udp_h
-#define udp_h
+#include <stddef.h>
+#include <stdint.h>
+
+#ifndef libAES67_types_h
+#define libAES67_types_h
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+typedef unsigned char aes67_byte_t;
+typedef size_t aes67_size_t;
+
+typedef uint32_t aes67_flags_t;
+
+/* Opaque handles */
+typedef struct aes67_stream_s aes67_stream_t;
+typedef struct aes67_clock_s aes67_clock_t;
+typedef struct aes67_session_s aes67_session_t;
+
+typedef uint8_t aes67_bool_t;
+
+#define AES67_TRUE true
+#define AES67_FALSE false
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* udp_h */
+#endif /* libAES67_types_h */

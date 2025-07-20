@@ -15,8 +15,19 @@
  */
 
 /*
- * rtp.c
- * Description: Implementation of RTP (Real-time Transport Protocol) functions.
+ * rtp.h
+ * Description: Definition of RTP (Real-time Transport Protocol) functions.
  */
 
-#include <libAES67/rtp.h>
+#ifndef libAES67_rtp_h
+#define libAES67_rtp_h
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* libAES67_rtp_h */

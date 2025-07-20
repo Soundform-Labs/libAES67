@@ -205,6 +205,8 @@ if(CPPCHECK_EXE)
             --inconclusive
             --std=c23
             --quiet
+            --suppress=missingIncludeSystem
+            --suppress=unmatchedSuppression
             -I ${CMAKE_SOURCE_DIR}
             -I ${CMAKE_SOURCE_DIR}/libAES67/include
             ${CMAKE_SOURCE_DIR}/libAES67/src
