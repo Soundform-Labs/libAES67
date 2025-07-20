@@ -19,7 +19,7 @@
 ##===----------------------------------------------------------------------===##
 
 cmake_minimum_required(VERSION 4.0)
-project(libAES67 LANGUAGES C)
+project(libAES67 LANGUAGES C CXX OBJC OBJCXX)
 
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -30,8 +30,17 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
 endif()
 
-file(GLOB_RECURSE LIBAES67_SOURCES CONFIGURE_DEPENDS libAES67/src/*.c)
-file(GLOB_RECURSE LIBAES67_HEADERS CONFIGURE_DEPENDS libAES67/include/libAES67/*.h)
+file(GLOB_RECURSE LIBAES67_SOURCES CONFIGURE_DEPENDS
+    libAES67/src/*.c
+    libAES67/src/*.cpp
+    libAES67/src/*.m
+    libAES67/src/*.mm
+)
+
+file(GLOB_RECURSE LIBAES67_HEADERS CONFIGURE_DEPENDS
+    libAES67/include/libAES67/*.h
+    libAES67/include/libAES67/*.hpp
+)
 
 if(WIN32)
     message(STATUS "Configuring for Windows")
@@ -69,6 +78,11 @@ if(APPLE)
     )
 endif()
 
+find_library(FOUNDATION_FRAMEWORK Foundation)
+if(FOUNDATION_FRAMEWORK)
+    target_link_libraries(libAES67 PRIVATE ${FOUNDATION_FRAMEWORK})
+endif()
+
 target_include_directories(libAES67
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/libAES67/include>
@@ -100,7 +114,7 @@ if(MSVC)
     target_compile_options(libAES67 PRIVATE /W4)
 else()
     target_compile_options(libAES67 PRIVATE
-        -Wall -Wextra -Werror -Wpedantic -Wunused-parameter -Wshadow -Wconversion -Wcast-align -Wnull-dereference
+        -Wall -Wextra -Werror -Wpedantic -Wunused-parameter -Wshadow -Wconversion -Wcast-align -Wnull-dereference -Wobjc-missing-property-synthesis
     )
 
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
